@@ -1,4 +1,5 @@
 +incdir+./verif
-./verif/sfifo_pkg.sv
-./verif/sfifo_interface.sv
-./verif/tb_top.sv
+./verif/tdpram_pkg.sv
+./verif/tdpram_interface.sv
+./verif/tdpram_tester_module.sv
+./verif/top.sv

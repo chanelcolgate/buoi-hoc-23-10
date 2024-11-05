@@ -2,6 +2,6 @@ set NoQuitOnFinish 1
 onbreak {resume}
 log /* -r
 run -all
-coverage save sfifo.ucdb
-vcover report sfifo.ucdb -cvg -details
+coverage save tdpram.ucdb
+vcover report tdpram.ucdb -cvg -details
 quit
