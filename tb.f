@@ -1,0 +1,15 @@
++incdir+./tb
++incdir+./spi_master_dut
++incdir+./spi_slave_dut
+./spi_master_dut/timescale.v
+./spi_master_dut/spi_defines.v
+./spi_master_dut/spi_clgen.v
+./spi_master_dut/spi_shift.v
+./spi_master_dut/spi.v
+./spi_slave_dut/ice40_resetn.v
+./spi_slave_dut/spi_shifter.sv
+./spi_slave_dut/spi_slave.sv
+./spi_slave_dut/wb_spi_slave.sv
+./tb/spi_pkg.sv
+./tb/spi_interface.sv
+./tb/tb_top.sv
