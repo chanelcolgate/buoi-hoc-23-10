@@ -42,7 +42,7 @@
 `include "spi_defines.v"
 `include "timescale.v"
 
-module spi_top
+module spi
 (
   // Wishbone signals
   wb_clk_i, wb_rst_i, wb_adr_i, wb_dat_i, wb_dat_o, wb_sel_i,

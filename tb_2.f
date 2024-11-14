@@ -1,0 +1,9 @@
++incdir+./tb
++incdir+./dut
+./dut/spi_clock_gen.v
+./dut/spi_shift.v
+./dut/spi.v
+./dut/spi_slave.v
+./tb/spi_pkg.sv
+./tb/spi_interface.sv
+./tb/tb_top.sv

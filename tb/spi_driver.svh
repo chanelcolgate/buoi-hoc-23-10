@@ -13,7 +13,7 @@ class spi_driver extends uvm_driver #(spi_seq_item);
         if (!uvm_config_db#(virtual spi_interface)::get(this, "", "m_if", m_vif))
             `uvm_fatal("SPI_DRIVER", {"Virtual interface must be set for:", get_full_name(), ".m_vif"})
 
-        if (!uvm_config_db#()::get(this, "", "s_if", s_vif))
+        if (!uvm_config_db#(virtual spi_interface)::get(this, "", "s_if", s_vif))
             `uvm_fatal("SPI_DRIVER", {"Virtual interface must be set for:", get_full_name(), ".s_vif"})
 
         dut_in_pkt = new("dut_in_pkt", this);
@@ -33,9 +33,10 @@ class spi_driver extends uvm_driver #(spi_seq_item);
                 drive_transfer(req);
                 $cast(packet, req.clone());
                 packet = req;
+                $display($sformatf("exp_master_data: %32h", packet.exp_master_data));
                 dut_in_pkt.write(packet);
                 seq_item_port.item_done();
-                wait (m_vif.tick == 1'b0):
+                wait (m_vif.tick == 1'b0);
             end
         join_none
     endtask

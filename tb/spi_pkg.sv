@@ -5,6 +5,7 @@ package spi_pkg;
 
     `include "tb_defines.svh"
     `include "spi_seq_item.svh"
+    `include "wb_bfm.svh"
 
     `include "spi_sequencer.svh"
     `include "spi_driver.svh"

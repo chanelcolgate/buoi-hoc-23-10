@@ -24,7 +24,7 @@ class spi_scoreboard extends uvm_scoreboard;
         report_tag = $sformatf("%0s", name);
     endfunction
 
-    function void build_phase(uvm_phase);
+    function void build_phase(uvm_phase phase);
         spi_coverage_h = spi_coverage::type_id::create("spi_coverage_h", this);
 
         drv2sb = new("drv2sb", this);
@@ -62,7 +62,7 @@ class spi_scoreboard extends uvm_scoreboard;
     function void perform_check(spi_seq_item ip_pkt, spi_seq_item op_pkt);
         if (ip_pkt.exp_master_data == op_pkt.out_master_data && ip_pkt.exp_slave_data == op_pkt.out_slave_data) begin
             `uvm_info(get_full_name(), "Master PASSED", UVM_MEDIUM)
-            `uvm_ifno(get_full_name(), "Slave PASSED", UVM_MEDIUM)
+            `uvm_info(get_full_name(), "Slave PASSED", UVM_MEDIUM)
             pass++;
         end else begin
             `uvm_error(
@@ -87,7 +87,7 @@ class spi_scoreboard extends uvm_scoreboard;
             $display("******************************");
             uvm_report_info(
                 "Scoreboard Report",
-                $sformatf("Transactions PASS = %0d FAILD = %0d", pass, fail),
+                $sformatf("Transactions PASS = %0d FAILED = %0d", pass, fail),
                 UVM_MEDIUM
             );
             $display("******************************");
@@ -95,11 +95,11 @@ class spi_scoreboard extends uvm_scoreboard;
             $display("==============================");
         end else begin
             $display("32 bit -- MSB First - TX: posedge --RX: negedge");
-            $display("TEST FAILED");
+            $display("******* TEST FAILED **********");
             $display("******************************");
             uvm_report_info(
                 "Scoreboard Report",
-                $sformatf("Transactions PASS = %0d FAILD = %0d", pass, fail),
+                $sformatf("Transactions PASS = %0d FAILED = %0d", pass, fail),
                 UVM_MEDIUM
             );
             $display("******************************");

@@ -8,7 +8,7 @@ class spi_env extends uvm_env;
         super.new(name, parent);
     endfunction
 
-    function void_phase(uvm_phase phase);
+    function void build_phase(uvm_phase phase);
         spi_agent_h = spi_agent::type_id::create("spi_agent_h", this);
         spi_scoreboard_h = spi_scoreboard::type_id::create("spi_scoreboard_h", this);
     endfunction

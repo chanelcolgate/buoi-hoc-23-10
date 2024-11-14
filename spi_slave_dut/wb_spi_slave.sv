@@ -19,7 +19,7 @@ module wb_spi_slave (
         //output logic      o_wb_sel,
         output logic        o_wb_stb,
 
-        output logic [25:0] o_wb_adr,
+        output logic [4:0]  o_wb_adr,
         output logic [31:0]  o_wb_dat,
         output logic        o_wb_we,
                   

@@ -1,4 +1,4 @@
-class spi_seq_item extends uvm_seq_item;
+class spi_seq_item extends uvm_sequence_item;
     `uvm_object_utils(spi_seq_item)
 
     // Register configuration:

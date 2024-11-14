@@ -2,12 +2,11 @@
 compile:
 	vlib work
 	vmap work work
-	vlog sync_fifo.sv
-	vlog -f tb.f
+	vlog -f tb_2.f
 
 simulate:
 	vopt work.tb_top -o top_optimized +acc +cover=sbfec
-	vsim -c top_optimized -do run.do -coverage +UVM_TESTNAME=sfifo_test
+	vsim -c top_optimized -do run.do -coverage +UVM_TESTNAME=spi_test
 
 clean:
 	rmdir /s /q work

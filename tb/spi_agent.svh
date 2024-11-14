@@ -17,7 +17,7 @@ class spi_agent extends uvm_agent;
         if (!uvm_config_db#(virtual spi_interface)::get(this, "", "m_if", m_vif))
             `uvm_fatal("SPI_AGENT", {"Virtual interface must be set for:", get_full_name(), ".m_vif"})
 
-        if (!uvm_config_db#()::get(this, "", "s_if", s_vif))
+        if (!uvm_config_db#(virtual spi_interface)::get(this, "", "s_if", s_vif))
             `uvm_fatal("SPI_AGENT", {"Virtual interface must be set for:", get_full_name(), ".s_vif"})
         
         spi_sequencer_h = spi_sequencer::type_id::create("spi_sequencer_h", this);

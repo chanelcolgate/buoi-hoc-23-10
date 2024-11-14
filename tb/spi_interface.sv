@@ -1,4 +1,4 @@
-interface spi_interface(input bit clk);
+interface spi_interface(input bit clock);
     `include "uvm_macros.svh"
 
     import uvm_pkg::*;

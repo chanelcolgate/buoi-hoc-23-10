@@ -15,7 +15,7 @@ parameter SPI_SS = 5'h18;
 
 logic clock, rstn;
 logic sclk, mosi, miso;
-logic [3:0] ss;
+logic [7:0] ss;
 logic tip;
 
 // Virtual interface
