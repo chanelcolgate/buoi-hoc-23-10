@@ -33,7 +33,7 @@ class spi_driver extends uvm_driver #(spi_seq_item);
                 drive_transfer(req);
                 $cast(packet, req.clone());
                 packet = req;
-                $display($sformatf("exp_master_data: %32h", packet.exp_master_data));
+                // $display($sformatf("exp_master_data: %0h", packet.exp_master_data));
                 dut_in_pkt.write(packet);
                 seq_item_port.item_done();
                 wait (m_vif.tick == 1'b0);

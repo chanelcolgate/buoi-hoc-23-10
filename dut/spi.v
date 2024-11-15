@@ -159,6 +159,7 @@ always @(posedge wb_clk_i or posedge wb_rst_i) begin
 		wb_dat_o <= 32'b0;
 	else
 		wb_dat_o <= wb_dat;
+    $display("DUT: %0h", wb_dat_o);
 end
 /*−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−Wb acknowledge−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−*/
 always @(posedge wb_clk_i or posedge wb_rst_i) begin

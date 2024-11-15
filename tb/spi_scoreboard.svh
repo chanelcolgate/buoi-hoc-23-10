@@ -33,7 +33,10 @@ class spi_scoreboard extends uvm_scoreboard;
 
     function void write_exp_pkt(spi_seq_item tmp_pkt);
         spi_seq_item pkt;
-        $cast(pkt, tmp_pkt.clone());
+        // $display($sformatf("exp_master_data: %0h", tmp_pkt.exp_master_data));
+        // $cast(pkt, tmp_pkt.clone());
+        pkt = tmp_pkt.clone_me();
+        // $display($sformatf("exp_master_data: %0h", pkt.exp_master_data));
         drv_pkt.push_back(pkt);
         uvm_test_done.raise_objection(this);
     endfunction
@@ -67,11 +70,11 @@ class spi_scoreboard extends uvm_scoreboard;
         end else begin
             `uvm_error(
                 get_full_name(),
-                $sformatf("Slave FAILED: exp data=%0h and out data%0h", ip_pkt.exp_slave_data, op_pkt.out_slave_data)
+                $sformatf("Slave FAILED: exp data=%0h and out data=%0h", ip_pkt.exp_slave_data, op_pkt.out_slave_data)
             )
             `uvm_error(
                 get_full_name(),
-                $sformatf("Master FAILED: exp data=%0h and out data%0h", ip_pkt.exp_master_data, op_pkt.out_master_data)
+                $sformatf("Master FAILED: exp data=%0h and out data=%0h", ip_pkt.exp_master_data, op_pkt.out_master_data)
             )
             fail++;
         end

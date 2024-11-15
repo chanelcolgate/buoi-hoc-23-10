@@ -28,7 +28,9 @@ class spi_monitor extends uvm_monitor;
         forever begin
             wait (m_vif.tick == 1'b0); // wait_to_complete
             wb_bfm::wb_read(m_vif, 1, SPI_RX_0, packet.out_master_data);
+            $display($sformatf("%0h", packet.out_master_data));
             wb_bfm::wb_read(s_vif, 1, SPI_RX_0, packet.out_slave_data);
+            $display($sformatf("%0h", packet.out_slave_data));
             dut_out_pkt.write(packet);
             wait (m_vif.tick == 1'b1); // wait_to_start
         end
