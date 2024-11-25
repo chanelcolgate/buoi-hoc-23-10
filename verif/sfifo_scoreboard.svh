@@ -59,16 +59,16 @@ class sfifo_scoreboard extends uvm_subscriber #(sfifo_seq_item);
         predicted = queue.pop_front();
 
         if (predicted == t.output_data) begin
-          `uvm_info(
-            "SELF_CHECKER",
-            {$sformatf("PASS: input_data: %2h| ", predicted), t.convert2string()},
-            UVM_LOW
-          )
+            `uvm_info(
+                "SELF_CHECKER",
+                {$sformatf("PASS: input_data: %2h| ", predicted), t.convert2string()},
+                UVM_LOW
+            )
         end else begin
-          `uvm_error(
-            "SELF_CHECKER",
-            {$sformatf("FAIL: input_data: %2h| ", predicted), t.convert2string()}
-          )
+            `uvm_error(
+                "SELF_CHECKER",
+                {$sformatf("FAIL: input_data: %2h| ", predicted), t.convert2string()}
+            )
         end
       end
     end

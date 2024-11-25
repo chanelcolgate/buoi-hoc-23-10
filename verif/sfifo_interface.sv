@@ -52,10 +52,10 @@ interface sfifo_interface;
   always @(negedge clk) begin
     // @(negedge clk);
     if (wr_en) begin
-      // $display($sformatf("time: %t input_data: %2h", $time, input_data));
+      $display($sformatf("time: %t input_data: %2h", $time, input_data));
       sfifo_monitor_h.write_to_coverage(input_data);
     end else begin
-      // $display($sformatf("time: %t output_data: %2h", $time, output_data));
+      $display($sformatf("time: %t output_data: %2h", $time, output_data));
       sfifo_monitor_h.write_to_scoreboard(output_data);
     end
   end

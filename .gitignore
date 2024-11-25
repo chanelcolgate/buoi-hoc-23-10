@@ -4,4 +4,6 @@ transcript
 vsim.wlf
 vsim_stacktrace.vstf
 work
+*.jou
+*.log
 
