@@ -69,8 +69,8 @@ module sync_fifo
   wire NLW_static_mem_reg_0_15_6_7_SPO_UNCONNECTED;
   wire NLW_static_mem_reg_0_15_6_7__0_SPO_UNCONNECTED;
 
-  always @(negedge clk)
-      $display("output_data %2h", output_data);
+  // always @(negedge clk)
+  //     $display("output_data %2h", output_data);
 
 
   BUFG clk_IBUF_BUFG_inst

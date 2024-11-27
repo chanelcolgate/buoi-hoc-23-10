@@ -13,7 +13,7 @@ class sfifo_sequence extends uvm_sequence#(sfifo_seq_item);
       "******* GENERATE 20 RANDOM REQS ********",
       UVM_LOW
     )
-    repeat (20) begin
+    repeat (50) begin
       req = sfifo_seq_item::type_id::create("req");
       start_item(req);
       assert(req.randomize());

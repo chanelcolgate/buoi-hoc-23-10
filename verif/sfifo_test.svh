@@ -20,6 +20,7 @@ class sfifo_test extends uvm_test;
     task run_phase(uvm_phase phase);
         sfifo_sequence_h = sfifo_sequence::type_id::create("sfifo_sequence_h");
         phase.raise_objection(this);
+        #130;
         sfifo_sequence_h.start(sfifo_sequencer_h);
         phase.drop_objection(this);
     endtask

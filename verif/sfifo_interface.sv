@@ -1,4 +1,4 @@
-`timescale 1ps/1ps
+`timescale 1ns/1ps
 interface sfifo_interface;
   `include "uvm_macros.svh"
 
@@ -23,9 +23,11 @@ interface sfifo_interface;
   end
 
   task reset_sfifo();
+    #110;
+    reset = 1'b0;
+    #5;
     reset = 1'b1;
-    @(negedge clk);
-    @(negedge clk);
+    #2;
     reset = 1'b0;
   endtask
 
@@ -36,14 +38,14 @@ interface sfifo_interface;
   );
     // @(negedge clk);
     if (i_wr_en) begin
-      wr_en = 1'b1;
-      input_data = i_input_data;
+      wr_en <= 1'b1;
+      input_data <= i_input_data;
       @(negedge clk);
-      wr_en = 1'b0;
+      wr_en <= 1'b0;
     end else if (i_rd_en) begin
-      rd_en = 1'b1;
+      rd_en <= 1'b1;
       @(negedge clk);
-      rd_en = 1'b0;
+      rd_en <= 1'b0;
     end
   endtask
 
@@ -55,6 +57,7 @@ interface sfifo_interface;
       $display($sformatf("time: %t input_data: %2h", $time, input_data));
       sfifo_monitor_h.write_to_coverage(input_data);
     end else begin
+      @(posedge clk);
       $display($sformatf("time: %t output_data: %2h", $time, output_data));
       sfifo_monitor_h.write_to_scoreboard(output_data);
     end
