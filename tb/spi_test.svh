@@ -29,6 +29,7 @@ class spi_test extends uvm_test;
     task main_phase(uvm_phase phase);
         spi_sequence_h = spi_sequence::type_id::create("spi_sequence_h");
         phase.raise_objection(this);
+        #130;
         spi_sequence_h.start(spi_sequencer_h);
         phase.drop_objection(this);
     endtask

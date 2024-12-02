@@ -7,12 +7,13 @@ class spi_sequence extends uvm_sequence #(spi_seq_item);
     endfunction
 
     task body();
-
-        req = spi_seq_item::type_id::create("req");
-        start_item(req);
-        configure_dut_register();
-        set_dut_data();
-        finish_item(req);
+        repeat (50) begin
+            req = spi_seq_item::type_id::create("req");
+            start_item(req);
+            configure_dut_register();
+            set_dut_data();
+            finish_item(req);
+        end
     endtask
 
     function void configure_dut_register();

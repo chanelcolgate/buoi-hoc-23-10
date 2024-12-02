@@ -14,7 +14,7 @@ input wb_rst_i; // synchronous active high reset
 input [4:0] wb_adr_i; // lower address bits
 input [31:0] wb_dat_i; // data bus input
 output [31:0] wb_dat_o; // data bus output
-input [3:0] wb_sel_i; // byte select inputs
+input [31:0] wb_sel_i; // byte select inputs
 input wb_we_i; // write enable input
 input wb_stb_i; // stobe/core select signal
 input wb_cyc_i; // valid bus cycle input
@@ -90,7 +90,9 @@ wb_int_o <= 1'b0;
 end */
 //−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
 // Ctrl register
-always @(posedge wb_clk_i or posedge wb_rst_i) begin
+
+always @(posedge wb_clk_i )//or posedge wb_rst_i) 
+begin
 	if (wb_rst_i)
 		//ctrl <= {`SPI_CTRL_BIT_NB{1'b0}};
 		ctrl <= 14'b0;
@@ -104,7 +106,10 @@ always @(posedge wb_clk_i or posedge wb_rst_i) begin
 		end
 end
 //−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
-always @(posedge(sclk_pad_i && !rx_negedge) or negedge (sclk_pad_i && rx_negedge) or posedge wb_rst_i or posedge (wb_clk_i && (&ss_pad_i))) begin
+//always @(posedge(sclk_pad_i && !rx_negedge) or negedge (sclk_pad_i && rx_negedge) or posedge wb_rst_i or posedge (wb_clk_i && (&ss_pad_i))) 
+always @(posedge sclk_pad_i ) begin
+	if (!rx_negedge || (!(rx_negedge && sclk_pad_i)) || (wb_clk_i && (&ss_pad_i)))
+	begin
 	if (wb_rst_i)
 		wb_dat <= 32'b0;
 	else if (!(&ss_pad_i))
@@ -113,12 +118,14 @@ always @(posedge(sclk_pad_i && !rx_negedge) or negedge (sclk_pad_i && rx_negedge
 		wb_dat <= wb_dat_i;
 	else
 		wb_dat <= wb_dat;
-end
+end end
 //−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−−
-always @(posedge (sclk_pad_i && !tx_negedge) or negedge (sclk_pad_i && tx_negedge))
+//always @(posedge (sclk_pad_i && !tx_negedge) or negedge (sclk_pad_i && tx_negedge))
+always @(posedge sclk_pad_i)begin
+	if(!tx_negedge || (!(tx_negedge && sclk_pad_i)))
 	begin
 		miso_pad_o <= wb_dat[31];
 	end
-
+end
 endmodule
 

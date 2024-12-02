@@ -1,6 +1,10 @@
-*.ini
+modelsim.ini
+sfifo.ucdb
 transcript
-*.wlf
+vsim.wlf
+vsim_stacktrace.vstf
 work
-*.ucdb
-*.vstf
+*.jou
+*.log
+.Xil
+

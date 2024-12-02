@@ -83,14 +83,17 @@ spi_slave spi_slave (
 initial begin
     clock = 0;
     forever begin
-        #25;
+        #10;
         clock = ~clock;
     end
 end
 
 task reset_dut();
+    #110;
+    rstn = 1'b0;
+    #5;
     rstn = 1'b1;
-    @(posedge clock);
+    #2;
     rstn = 1'b0;
 endtask
 
