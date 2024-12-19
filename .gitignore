@@ -1,7 +1,7 @@
 modelsim.ini
-sfifo.ucdb
+*.ucdb
 transcript
-vsim.wlf
-vsim_stacktrace.vstf
+*.wlf
+*.vstf
 work
-
+*.swp

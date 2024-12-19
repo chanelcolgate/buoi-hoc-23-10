@@ -1,4 +1,4 @@
 +incdir+./verif
-./verif/sfifo_pkg.sv
-./verif/sfifo_interface.sv
+./verif/dma_pkg.sv
+./verif/dma_interface.sv
 ./verif/tb_top.sv
