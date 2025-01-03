@@ -22,10 +22,13 @@ class dma_scoreboard extends uvm_subscriber #(reg_out_item);
         reg_out_item predicted;
         string data_str;
 
+        predicted = reg_out_item::type_id::create("predicted");
+
         if (t.rd_data) begin
             if (!input_port.try_get(input_t))
                 `uvm_fatal("DMA_SCOREBOARD", "Missing input_t in self checker")
 
+            $display(input_t.val_data);
             predicted.rd_data = input_t.val_data;
 
             data_str = {

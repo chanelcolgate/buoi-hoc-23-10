@@ -34,13 +34,11 @@ interface dma_interface #(parameter WIDTH_p = 32);
         input int i_val_data,
         output int o_rd_data
     );
-        valid = 1'b0;
         @(posedge clk);
         addr = i_val_addr;
         wdata = i_val_data;
         wr_en = 1'b1;
         valid = 1'b1;
-        @(posedge clk);
         @(posedge clk);
         wr_en = 1'b0;
         @(posedge clk);
@@ -54,16 +52,31 @@ interface dma_interface #(parameter WIDTH_p = 32);
     initial begin
         forever begin
             @(posedge clk);
+            @(posedge clk);
             if (valid) begin
                 if (wr_en) begin
+                    $display("Input");
+                    $display(addr);
+                    $display(wdata);
                     in_monitor_h.write_to_monitor(addr, wdata);
                     @(posedge clk);
                 end
-            end else begin
-                @(posedge clk);
-                @(posedge clk);
-                out_monitor_h.write_to_monitor(rdata);
             end
+        end
+    end
+
+    initial begin
+        forever begin
+            @(posedge clk);
+            @(posedge clk);
+            @(posedge clk);
+            $display("Here");
+            $display(rdata);
+            out_monitor_h.write_to_monitor(rdata);
+            // if (valid) begin
+            //     if (!wr_en) begin
+            //     end
+            // end
         end
     end
 endinterface
