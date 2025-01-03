@@ -25,7 +25,7 @@ class reg_in_item extends uvm_sequence_item;
         return same;
     endfunction
 
-    function convert2string();
+    function string convert2string();
         string msg;
         msg = {
             msg,

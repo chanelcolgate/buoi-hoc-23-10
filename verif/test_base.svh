@@ -15,4 +15,21 @@ class test_base extends uvm_test;
     function void end_of_elaboration_phase(uvm_phase phase);
         dma_sequencer_h = dma_environment_h.dma_agent_h.dma_sequencer_h;
     endfunction
+
+    function void start_of_simulation_phase(uvm_phase phase);
+        `uvm_info("TEST", $sformatf("\n\
+        #################################\n\
+            TESTNAME: %s \n\
+        #################################",
+        get_type_name()), UVM_MEDIUM)
+    endfunction
+
+    function void final_phase(uvm_phase phase);
+        `uvm_info("TEST", $sformatf("\n\
+        --------------------------------------\n\
+        |   Simulation for verification Done!.\n\
+        |   -- %s \n\
+        --------------------------------------",
+        get_type_name()), UVM_MEDIUM)
+    endfunction
 endclass

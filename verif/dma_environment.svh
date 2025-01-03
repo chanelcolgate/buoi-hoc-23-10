@@ -17,7 +17,7 @@ class dma_environment extends uvm_env;
 
     function void connect_phase(uvm_phase phase);
         dma_agent_h.in_monitor_h.ap.connect(dma_coverage_h.analysis_export);
-        dma_agent_h.in_monitor_h.ap.connect(dma_scoreboard_h.input_port.analysis_export
+        dma_agent_h.in_monitor_h.ap.connect(dma_scoreboard_h.input_port.analysis_export);
         dma_agent_h.out_monitor_h.ap.connect(dma_scoreboard_h.analysis_export);
     endfunction
 endclass

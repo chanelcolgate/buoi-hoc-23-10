@@ -30,8 +30,8 @@ interface dma_interface #(parameter WIDTH_p = 32);
     endtask
 
     task drive(
-        input int i_val_add,
-        input int i_val_data
+        input int i_val_addr,
+        input int i_val_data,
         output int o_rd_data
     );
         valid = 1'b0;

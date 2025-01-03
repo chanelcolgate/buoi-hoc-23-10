@@ -3,7 +3,7 @@ class api_write_sequence extends uvm_sequence #(reg_in_item);
 
     int val_addr, val_data;
 
-    function new(string name);
+    function new(string name="api_write_sequence");
         super.new(name);
     endfunction
 
